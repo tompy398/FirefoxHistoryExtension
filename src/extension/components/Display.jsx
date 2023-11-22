@@ -1,36 +1,34 @@
-import Moment from 'moment'
 import styled from 'styled-components'
 
 import HistoryComp from './HistoryComp'
 
-const StyledUL = styled.ul`
+const StyledHistoryList = styled.div`
     display: flex;
     flex-direction: column;
-
-    row-gap: .3rem;
-    margin: 0 .5rem;
-    padding: 1rem 20%;
-    border-radius: 1rem;
-    //background-color: #DDE6ED;
-    background-color: #1b2735;
+    align-items: center;
 `
 
-const Display = ({ history }) => {
+const Display = ({ groupKeys, grouping }) => {
+    
+    const temp = groupKeys.map( (dateKey) => {
+        return grouping[dateKey][0].title
+    })
+
+    console.log(grouping[groupKeys[0]])
+    console.log('temp arr', temp)
+    console.log('length temp', temp.length)
+
     return (
         <>
-            <h1>History Items:</h1>
-            <StyledUL>
-                {history.map( (HistoryItem) => {
-                    let unixTime = HistoryItem.lastVisitTime
-                    //unixTime = Moment(unixTime).format("M/D/YYYY h:mm:ss a") [For Reference] To get the date alongside it
-                    unixTime = Moment(unixTime).format("hh:mm A")
+            <h1>History:</h1>
 
-                    return (
-                        <HistoryComp title={HistoryItem.title} time={unixTime} url={HistoryItem.url} />
-                    )   
-                   
-                })}
-            </StyledUL>
+                {
+                    groupKeys.map( (dateKey) => {
+                        return (
+                            <HistoryComp date={dateKey} groupedByDate={grouping[dateKey]} />
+                        )
+                    })
+                }
         </>
     )
 }

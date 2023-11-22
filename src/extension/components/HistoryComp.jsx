@@ -1,80 +1,43 @@
 import styled from 'styled-components'
-import Favicon from './Favicon'
 
-const StyledLI = styled.li`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  column-gap: 1rem;
-  
-  list-style-type: none;
-  padding: .25rem 2rem;
-  font-size: 1rem;
-  
-  // Way to make text ... [Reference]: https://css-tricks.com/flexbox-truncated-text/
-  min-width: 0;
-  // --------------------------------------------------------------------------------
-  height: 2rem;
+import HistoryItem from './HistoryItem'
 
-  //background-color: #6798b6;
-  //box-shadow: 0 4px 2px -2px rgba(0,0,0,0.65);
+const StyledHistoryComp = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 
-  background-color: #39485b;
+    background-color: #1b2735;
+    margin: 10px;
+
 `
 
-// [Abandoned Plan] Making the whole box clickable (NVM), Have an alt context bar show up with full title
-// [Plan] Automatically adjust the text to match flex box size
-const StyledA = styled.a`
-    text-decoration: none;
-    //color: #FFFF;
-    //text-shadow: 1px 1px 2px black;
-    color: #d5dde8;
-    font-family: Monospace;
-    font-size: 1rem;
 
-    // Way to make text ... [Reference]: https://css-tricks.com/flexbox-truncated-text/
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
-
-const TimerStyledSPAN = styled.span`
-    //color: #27374D;
-    color: #d5dde8;
-    font-family: Monospace;
-    font-size: 1rem;
-    // [Resolving For] CASE: The timer flex box would shrink when the text is too long
-    // Source: https://stackoverflow.com/questions/49056401/when-using-nowrap-within-a-flex-row-avoid-pushing-the-last-elements-off-the-s
-    flex-shrink: 0; 
-    margin-right: 1rem;
-`
-
-const URLStyledSPAN = styled.span`
-    //color: #27374D;
-    color: #abb7c7;
-    font-family: Monospace;
-    font-size: .85rem;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
-const HistoryComp = ({ title, time, url }) => {
-    if (!title) { // [Resolving For] CASE: Sometimes for link redirects (EX: youtu.be), the title is NULL
-        return
-    }
+const StyledUL = styled.ul`
+    display: flex;
+    flex-direction: column;
     
-    // Index 0: Link with HTTP/HTTPS, Index 1: Abbreviated link (w/o HTTP/HTTPS)
-    const arrUrls = url.match( new RegExp(/https?:\/\/([^/]*)\//) )
-
+    row-gap: .3rem;
+    //background-color: #DDE6ED;
+    background-color: #1b2735;
+`
+const HistoryComp = ({ date, groupedByDate }) => {
+    // title, time, url
+    console.log(date + ':', groupedByDate)
     return (
-        <StyledLI>
-            <TimerStyledSPAN>{time}</TimerStyledSPAN>
-            <Favicon mainSiteUrl={arrUrls[0]} />
-            <StyledA href={url}>{title}</StyledA>
-            <URLStyledSPAN>{arrUrls[1]}</URLStyledSPAN>
-        </StyledLI>
+        <>
+            <h1>{date}</h1>
+            <StyledUL>
+                {   
+                    groupedByDate.map( (Item) => {
+                        return <HistoryItem title={Item.title} time={Item.time} url={Item.url} />
+                    })
+                }
+            </StyledUL>
+        </>
     )
+    
 }
 
 export default HistoryComp
