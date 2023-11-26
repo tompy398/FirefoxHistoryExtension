@@ -7,7 +7,7 @@ const StyledHistoryList = styled.div`
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    background-color: #39485b;
+    background-color: rgb(39, 63, 94);
 
     padding: 1rem 0rem;
 `
