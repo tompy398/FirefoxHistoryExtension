@@ -16,9 +16,9 @@ const StyledLI = styled.li`
   font-size: .7rem;
 
   // Way to make text ... [Reference]: https://css-tricks.com/flexbox-truncated-text/
-  min-width: 95%;
+  min-width: 92%;
   // --------------------------------------------------------------------------------
-  max-width: 95%;
+  max-width: 92%;
   height: 1.5rem;
 
   //background-color: #6798b6;

@@ -1,12 +1,11 @@
-import PageContent from "~/components/PageContent";
-import "./App.css";
+import PopUpContent from "./components/PopUpContent";
 
-function App() {
+const App = () => {
   return (
     <main>
-      <PageContent>Popup</PageContent>
+      <PopUpContent />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App

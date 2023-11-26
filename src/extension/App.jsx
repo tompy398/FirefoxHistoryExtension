@@ -14,7 +14,7 @@ const App = () => {
             .search({
                 text: "",
                 startTime: 0,
-                maxResults: 1000, // Number.MAX_SAFE_INTEGER
+                maxResults: 100, // Number.MAX_SAFE_INTEGER
             })
 
         console.log(originalHistory)
