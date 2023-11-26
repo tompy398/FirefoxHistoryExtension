@@ -7,18 +7,23 @@ const StyledLI = styled.li`
   justify-content: flex-start;
   align-items: center;
   column-gap: 1rem;
-  
+  flex-shrink: 0; 
+
   list-style-type: none;
-  padding: 10px 10px;
+  padding: 5px 10px;
+  // top right bottom left
+  margin: 0;
   font-size: .7rem;
-  
+
   // Way to make text ... [Reference]: https://css-tricks.com/flexbox-truncated-text/
-  min-width: 0;
+  min-width: 95%;
   // --------------------------------------------------------------------------------
-  height: 2rem;
+  max-width: 95%;
+  height: 1.5rem;
 
   //background-color: #6798b6;
   //box-shadow: 0 4px 2px -2px rgba(0,0,0,0.65);
+  
 
   background-color: #39485b;
 `
@@ -32,13 +37,12 @@ const StyledA = styled.a`
     color: #d5dde8;
     font-family: Monospace;
     font-size: .85rem;
+    max-width: 75%;
 
     // Way to make text ... [Reference]: https://css-tricks.com/flexbox-truncated-text/
     white-space: nowrap;
-    overflow: clip;
+    overflow: hidden;
     text-overflow: ellipsis;
-
-    flex-shrink: 0;
 `
 
 const TimerStyledSPAN = styled.span`

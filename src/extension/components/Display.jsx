@@ -6,6 +6,10 @@ const StyledHistoryList = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    background-color: #39485b;
+
+    padding: 1rem 0rem;
 `
 
 const Display = ({ groupKeys, grouping }) => {
@@ -20,8 +24,7 @@ const Display = ({ groupKeys, grouping }) => {
 
     return (
         <>
-            <h1>History:</h1>
-
+            <StyledHistoryList>
                 {
                     groupKeys.map( (dateKey) => {
                         return (
@@ -29,6 +32,7 @@ const Display = ({ groupKeys, grouping }) => {
                         )
                     })
                 }
+            </StyledHistoryList>
         </>
     )
 }
